@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suto Cafe - Gorakhpur | Coffee, Bites & Chill</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            espresso: '#1C1411',
+            mocha: '#2B1E1A',
+            caramel: '#D97736',
+            gold: '#F5B041',
+            cream: '#FDF8F5',
+            latte: '#F4EAE2'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #1C1411;
+      color: #FDF8F5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .hero-bg {
+      background: linear-gradient(to bottom, rgba(28, 20, 17, 0.72), rgba(28, 20, 17, 0.96)),
+                  url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    .glass-card {
+      background: rgba(43, 30, 26, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(245, 176, 65, 0.15);
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1C1411; }
+    ::-webkit-scrollbar-thumb { background: #D97736; border-radius: 4px; }
+  </style>
+</head>
+<body class="antialiased selection:bg-caramel selection:text-white">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-40 bg-espresso/90 backdrop-blur-md border-b border-amber-500/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-caramel to-gold flex items-center justify-center text-espresso font-bold text-lg shadow-lg">
+          <i class="fa-solid fa-mug-hot"></i>
+        </div>
+        <div>
+          <span class="font-serif text-xl font-bold tracking-wide text-cream">Suto Cafe</span>
+          <span class="hidden sm:inline-block text-xs text-gold ml-1.5 font-medium px-2 py-0.5 rounded-full bg-gold/10 border border-gold/20">Gorakhpur</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-amber-100/80">
+        <a href="#about" class="hover:text-gold transition">Features</a>
+        <a href="#menu" class="hover:text-gold transition">Full Menu</a>
+        <a href="#gallery" class="hover:text-gold transition">Vibe & Hours</a>
+        <a href="#location" class="hover:text-gold transition">Location</a>
+      </div>
+
+      <button onclick="toggleCart()" class="relative bg-gradient-to-r from-caramel to-amber-600 hover:from-amber-600 hover:to-caramel text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg shadow-caramel/20 transition transform active:scale-95">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Order Now</span>
+        <span id="nav-cart-count" class="bg-espresso text-gold text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-bg pt-28 pb-20 md:pt-36 md:pb-28 px-4 border-b border-amber-500/10">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="inline-flex flex-wrap items-center justify-center gap-3 mb-6">
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-gold text-xs sm:text-sm font-semibold">
+          <i class="fa-solid fa-star text-amber-400"></i> 4.6 / 5 Rating (89+ Reviews)
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs sm:text-sm font-semibold">
+          <i class="fa-solid fa-leaf"></i> 100% Pure Vegetarian
+        </span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-cream leading-tight mb-5">
+        Sip, Savor & Chill at <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-caramel to-amber-400">Suto Cafe</span>
+      </h1>
+
+      <p class="text-amber-100/80 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+        Gorakhpur's favorite trendy hangout spot for handcrafted Cold Coffee, loaded Pizzas, crispy Burgers & sizzling Brownies. Order with Online Payment & Instant WhatsApp Checkout!
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 text-xs sm:text-sm text-amber-100/90 mb-10">
+        <div class="glass-card px-4 py-2.5 rounded-xl flex items-center gap-2">
+          <i class="fa-regular fa-clock text-gold"></i>
+          <span>Open Daily: <strong>11:00 AM – 10:00 PM</strong></span>
+        </div>
+        <div class="glass-card px-4 py-2.5 rounded-xl flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-caramel"></i>
+          <span>Rapti Nagar, Shahpur, Gorakhpur</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#menu" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-caramel to-gold text-espresso font-bold text-base shadow-xl shadow-caramel/25 hover:brightness-110 transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-utensils"></i> Explore Menu & Order
+        </a>
+        <a href="tel:+917752963966" class="w-full sm:w-auto px-8 py-3.5 rounded-full glass-card hover:bg-mocha text-cream font-semibold text-base transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-phone text-gold"></i> Call: 077529 63966
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cafe Features Section -->
+  <section id="about" class="py-16 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-gold text-xs font-bold uppercase tracking-widest">Why People Love Us</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">Cafe Features & Amenities</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      <div class="glass-card p-5 rounded-2xl text-center hover:border-gold/40 transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xl">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <h3 class="font-bold text-base mb-1">100% Pure Veg</h3>
+        <p class="text-xs text-amber-100/70">Fresh vegetarian ingredients prepared hygienically.</p>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl text-center hover:border-gold/40 transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-amber-500/15 text-gold flex items-center justify-center text-xl">
+          <i class="fa-solid fa-couch"></i>
+        </div>
+        <h3 class="font-bold text-base mb-1">Trendy Ambience</h3>
+        <p class="text-xs text-amber-100/70">Casual, cozy seating ideal for friends, couples & solo visits.</p>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl text-center hover:border-gold/40 transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center text-xl">
+          <i class="fa-solid fa-square-parking"></i>
+        </div>
+        <h3 class="font-bold text-base mb-1">Free Parking</h3>
+        <p class="text-xs text-amber-100/70">Hassle-free free parking lot & street parking available.</p>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl text-center hover:border-gold/40 transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center text-xl">
+          <i class="fa-solid fa-qrcode"></i>
+        </div>
+        <h3 class="font-bold text-base mb-1">Online Payment</h3>
+        <p class="text-xs text-amber-100/70">Pay easily via UPI, GPay, PhonePe, Paytm or Cash.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="py-16 px-4 max-w-7xl mx-auto border-t border-amber-500/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div>
+        <span class="text-gold text-xs font-bold uppercase tracking-widest">Freshly Made to Order</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">Suto Cafe Full Menu</h2>
+        <p class="text-sm text-amber-100/70 mt-1">Select items to add to your cart and pay online.</p>
+      </div>
+
+      <div class="relative w-full md:w-72">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-amber-100/50 text-sm"></i>
+        <input type="text" id="menu-search" onkeyup="filterMenu()" placeholder="Search pizza, cold coffee..."
+          class="w-full pl-10 pr-4 py-2.5 rounded-full bg-mocha border border-amber-500/20 text-sm text-cream placeholder-amber-100/40 focus:outline-none focus:border-gold">
+      </div>
+    </div>
+
+    <div id="category-tabs" class="flex gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+      <button onclick="setCategory('All')" class="cat-btn active px-5 py-2 rounded-full text-sm font-semibold bg-caramel text-white whitespace-nowrap transition">All Items</button>
+      <button onclick="setCategory('Coffee & Shakes')" class="cat-btn px-5 py-2 rounded-full text-sm font-semibold bg-mocha text-amber-100/80 hover:text-white whitespace-nowrap transition">Coffee & Shakes</button>
+      <button onclick="setCategory('Pizza')" class="cat-btn px-5 py-2 rounded-full text-sm font-semibold bg-mocha text-amber-100/80 hover:text-white whitespace-nowrap transition">Pizza</button>
+      <button onclick="setCategory('Burgers & Sandwiches')" class="cat-btn px-5 py-2 rounded-full text-sm font-semibold bg-mocha text-amber-100/80 hover:text-white whitespace-nowrap transition">Burgers & Sandwiches</button>
+      <button onclick="setCategory('Quick Bites & Pasta')" class="cat-btn px-5 py-2 rounded-full text-sm font-semibold bg-mocha text-amber-100/80 hover:text-white whitespace-nowrap transition">Quick Bites & Pasta</button>
+      <button onclick="setCategory('Desserts')" class="cat-btn px-5 py-2 rounded-full text-sm font-semibold bg-mocha text-amber-100/80 hover:text-white whitespace-nowrap transition">Desserts</button>
+    </div>
+
+    <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Injected via JS -->
+    </div>
+  </section>
+
+  <!-- Opening Hours -->
+  <section id="gallery" class="py-16 px-4 max-w-7xl mx-auto border-t border-amber-500/10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-caramel/10 rounded-full blur-2xl"></div>
+        <span class="inline-block px-3 py-1 rounded-full bg-gold/15 text-gold text-xs font-bold uppercase tracking-wider mb-3">
+          Visit Us Anytime
+        </span>
+        <h2 class="font-serif text-3xl font-bold mb-4">Opening & Closing Hours</h2>
+        <p class="text-sm text-amber-100/75 mb-6">
+          Whether it's an afternoon coffee break, evening snacks with friends, or a late-evening dessert craving—our doors are open all week!
+        </p>
+
+        <div class="space-y-3 border-t border-amber-500/15 pt-5 text-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-amber-100/80">Monday – Sunday</span>
+            <span class="font-bold text-gold">11:00 AM – 10:00 PM</span>
+          </div>
+          <div class="flex justify-between items-center pt-2 border-t border-amber-500/10">
+            <span class="text-amber-100/80">Accepted Payments</span>
+            <span class="text-emerald-400 font-medium">UPI, GPay, PhonePe, Paytm, Cash</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Coffee" class="rounded-2xl h-48 sm:h-56 w-full object-cover border border-amber-500/20">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza" class="rounded-2xl h-48 sm:h-56 w-full object-cover border border-amber-500/20 mt-4">
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="py-16 px-4 max-w-7xl mx-auto border-t border-amber-500/10">
+    <div class="glass-card rounded-3xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <span class="text-gold text-xs font-bold uppercase tracking-widest">Find Us</span>
+        <h2 class="font-serif text-3xl font-bold mt-1 mb-4">Suto Cafe - Gorakhpur</h2>
+
+        <div class="space-y-4 text-sm text-amber-100/85">
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-caramel text-lg mt-1"></i>
+            <div>
+              <p class="font-semibold text-cream">Address:</p>
+              <p>Ground Floor, Near Bandhan Bank, Vishnu Nagar, Rapti Nagar, Shahpur, Gorakhpur, Uttar Pradesh 273004</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-phone text-gold text-lg mt-1"></i>
+            <div>
+              <p class="font-semibold text-cream">Phone & WhatsApp Ordering:</p>
+              <p>+91 77529 63966</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-star text-amber-400 text-lg mt-1"></i>
+            <div>
+              <p class="font-semibold text-cream">Customer Rating:</p>
+              <p>4.6 ★ (Based on 89+ Google Reviews)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-7">
+          <a href="https://maps.google.com/?q=Suto+Cafe+Gorakhpur" target="_blank" class="px-6 py-3 rounded-full bg-caramel hover:bg-amber-600 text-white text-sm font-semibold transition inline-flex items-center gap-2">
+            <i class="fa-solid fa-diamond-turn-right"></i> Open in Google Maps
+          </a>
+        </div>
+      </div>
+
+      <div class="w-full h-72 rounded-2xl overflow-hidden border border-amber-500/20">
+        <iframe
+          src="https://www.google.com/maps?q=Suto+Cafe,+Vishnu+Nagar,+Rapti+Nagar,+Shahpur,+Gorakhpur,+Uttar+Pradesh+273004&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-amber-500/15 py-8 px-4 text-center text-xs text-amber-100/60">
+    <p class="font-serif text-base text-cream mb-1">Suto Cafe - Gorakhpur</p>
+    <p>Ground Floor, Near Bandhan Bank, Rapti Nagar, Shahpur, Gorakhpur • Open 11:00 AM – 10:00 PM</p>
+  </footer>
+
+  <!-- Floating Cart Bar -->
+  <div id="floating-cart-bar" class="fixed bottom-4 left-4 right-4 max-w-xl mx-auto z-40 hidden">
+    <button onclick="toggleCart()" class="w-full bg-gradient-to-r from-caramel to-gold text-espresso font-bold py-3.5 px-6 rounded-2xl shadow-2xl flex items-center justify-between transition transform hover:scale-[1.01]">
+      <div class="flex items-center gap-3">
+        <span id="float-count" class="bg-espresso text-gold px-2.5 py-1 rounded-lg text-xs">0 Items</span>
+        <span class="text-sm sm:text-base">View Order & Pay Online</span>
+      </div>
+      <span id="float-total" class="text-base sm:text-lg font-extrabold">₹0</span>
+    </button>
+  </div>
+
+  <!-- Cart / Checkout Drawer -->
+  <div id="cart-modal" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleCart()" class="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-mocha border-l border-amber-500/20 flex flex-col justify-between p-6 overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between border-b border-amber-500/15 pb-4 mb-5">
+          <h3 class="font-serif text-2xl font-bold text-cream">Your Order & Payment</h3>
+          <button onclick="toggleCart()" class="w-8 h-8 rounded-full bg-espresso text-amber-100 hover:text-gold flex items-center justify-center">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div id="cart-items" class="space-y-3 mb-6 max-h-48 overflow-y-auto pr-1">
+          <p class="text-sm text-amber-100/60 text-center py-6">Your cart is empty.</p>
+        </div>
+
+        <div class="space-y-4 border-t border-amber-500/15 pt-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gold mb-2">Order Type</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" id="btn-dinein" onclick="setOrderType('Dine-In (At Cafe Table)')" class="order-type-btn py-2 px-3 rounded-xl text-xs font-bold bg-caramel text-white border border-caramel">
+                <i class="fa-solid fa-chair mr-1"></i> At Cafe Table
+              </button>
+              <button type="button" id="btn-delivery" onclick="setOrderType('Home Delivery')" class="order-type-btn py-2 px-3 rounded-xl text-xs font-bold bg-espresso text-amber-100/80 border border-amber-500/20">
+                <i class="fa-solid fa-house mr-1"></i> Home Delivery
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs text-amber-100/80 mb-1">Your Name *</label>
+            <input type="text" id="cust-name" placeholder="Enter your name" class="w-full px-3.5 py-2 rounded-xl bg-espresso border border-amber-500/20 text-sm text-cream focus:outline-none focus:border-gold">
+          </div>
+
+          <div id="table-input-group">
+            <label class="block text-xs text-amber-100/80 mb-1">Table Number *</label>
+            <input type="text" id="cust-table" placeholder="e.g., Table 04" class="w-full px-3.5 py-2 rounded-xl bg-espresso border border-amber-500/20 text-sm text-cream focus:outline-none focus:border-gold">
+          </div>
+
+          <div id="address-input-group" class="hidden">
+            <label class="block text-xs text-amber-100/80 mb-1">Delivery Address (Gorakhpur) *</label>
+            <textarea id="cust-address" rows="2" placeholder="House/Flat No, Colony, Landmark..." class="w-full px-3.5 py-2 rounded-xl bg-espresso border border-amber-500/20 text-sm text-cream focus:outline-none focus:border-gold"></textarea>
+          </div>
+
+          <!-- Payment Mode Selection -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gold mb-2">Select Payment Method</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" id="pay-online-btn" onclick="setPaymentMode('Online UPI')" class="pay-mode-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-caramel text-white border border-caramel flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-qrcode"></i> Pay Online (UPI/QR)
+              </button>
+              <button type="button" id="pay-cash-btn" onclick="setPaymentMode('Cash / Pay at Cafe')" class="pay-mode-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-espresso text-amber-100/80 border border-amber-500/20 flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-money-bill-wave"></i> Pay on Delivery/Cafe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout Footer -->
+      <div class="border-t border-amber-500/15 pt-4 mt-4">
+        <div class="flex justify-between items-center text-base font-bold mb-3">
+          <span>Total Bill</span>
+          <span id="cart-total" class="text-xl text-gold">₹0</span>
+        </div>
+
+        <button onclick="proceedToCheckout()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-caramel to-gold hover:brightness-110 text-espresso font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg transition">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Continue to Payment & Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Online Payment Modal (UPI Apps & QR) -->
+  <div id="payment-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closePaymentModal()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+    <div class="relative bg-mocha border border-amber-500/30 rounded-3xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl z-10">
+      <button onclick="closePaymentModal()" class="absolute right-4 top-4 w-8 h-8 rounded-full bg-espresso text-amber-100 hover:text-gold flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+        Secure UPI Payment
+      </span>
+      <h3 class="font-serif text-2xl font-bold text-cream mb-1">Scan QR or Tap App</h3>
+      <p class="text-xs text-amber-100/70 mb-5">Pay <span id="pay-modal-amount" class="text-gold font-bold text-base">₹0</span> to Suto Cafe</p>
+
+      <!-- Dynamic QR Code Container (Using standard UPI deep link QR generator) -->
+      <div class="bg-white p-3 rounded-2xl w-48 h-48 mx-auto mb-5 shadow-inner flex items-center justify-center">
+        <img id="upi-qr-img" src="" alt="UPI QR Code" class="w-full h-full object-contain">
+      </div>
+
+      <!-- One-Tap UPI App Buttons for Mobile / Desktop -->
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        <a id="gpay-link" href="#" target="_blank" class="py-2.5 rounded-xl bg-espresso border border-amber-500/20 text-xs font-bold text-cream hover:bg-caramel transition flex flex-col items-center gap-1">
+          <i class="fa-brands fa-google-pay text-lg text-emerald-400"></i> Google Pay
+        </a>
+        <a id="phonepe-link" href="#" target="_blank" class="py-2.5 rounded-xl bg-espresso border border-amber-500/20 text-xs font-bold text-cream hover:bg-caramel transition flex flex-col items-center gap-1">
+          <i class="fa-solid fa-mobile-screen text-lg text-purple-400"></i> PhonePe
+        </a>
+        <a id="paytm-link" href="#" target="_blank" class="py-2.5 rounded-xl bg-espresso border border-amber-500/20 text-xs font-bold text-cream hover:bg-caramel transition flex flex-col items-center gap-1">
+          <i class="fa-solid fa-wallet text-lg text-sky-400"></i> Paytm / UPI
+        </a>
+      </div>
+
+      <p class="text-[11px] text-amber-100/60 mb-5">After successful payment, click below to send order confirmation to cafe WhatsApp.</p>
+
+      <button onclick="completeOrderAfterPayment('Paid Online')" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition">
+        <i class="fa-brands fa-whatsapp text-lg"></i> I Have Paid! Send Order to WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const menuItems = [
+      { id: 1, name: "Signature Cold Coffee", category: "Coffee & Shakes", price: 119, badge: "Bestseller", desc: "Rich creamy blended cold coffee topped with chocolate drizzle.", img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80" },
+      { id: 2, name: "Hazelnut Frappe", category: "Coffee & Shakes", price: 149, badge: "Popular", desc: "Smooth roasted hazelnut cold brew with whipped cream.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=500&q=80" },
+      { id: 3, name: "Oreo KitKat Shake", category: "Coffee & Shakes", price: 159, badge: "", desc: "Thick chocolate shake loaded with crushed Oreo & KitKat.", img: "https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=500&q=80" },
+      { id: 4, name: "Hot Cappuccino", category: "Coffee & Shakes", price: 99, badge: "", desc: "Freshly brewed espresso with velvety steamed milk foam.", img: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=500&q=80" },
+      { id: 5, name: "Suto Special Farmhouse Pizza", category: "Pizza", price: 249, badge: "Chef Special", desc: "Loaded with mozzarella cheese, capsicum, onion, sweet corn & olives.", img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=500&q=80" },
+      { id: 6, name: "Paneer Tikka Pizza", category: "Pizza", price: 269, badge: "Must Try", desc: "Spiced tandoori paneer cubes, red paprika & melted cheese.", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80" },
+      { id: 7, name: "Classic Margherita Pizza", category: "Pizza", price: 189, badge: "", desc: "Classic Italian herb tomato sauce with generous mozzarella.", img: "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=500&q=80" },
+      { id: 8, name: "Crispy Veg Cheese Burger", category: "Burgers & Sandwiches", price: 109, badge: "Bestseller", desc: "Crunchy herb potato patty, cheese slice, lettuce & signature mayo.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" },
+      { id: 9, name: "Paneer Makhani Grilled Sandwich", category: "Burgers & Sandwiches", price: 139, badge: "Popular", desc: "3-layer jumbo grilled sandwich stuffed with creamy paneer & veggies.", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=500&q=80" },
+      { id: 10, name: "White Sauce Alfredo Pasta", category: "Quick Bites & Pasta", price: 179, badge: "", desc: "Penne pasta tossed in rich cheesy garlic cream sauce & herbs.", img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80" },
+      { id: 11, name: "Peri-Peri French Fries", category: "Quick Bites & Pasta", price: 99, badge: "", desc: "Crispy golden fries tossed in spicy peri-peri seasoning.", img: "https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=500&q=80" },
+      { id: 12, name: "Sizzling Brownie with Ice Cream", category: "Desserts", price: 159, badge: "5★ Rated", desc: "Warm fudgy walnut brownie topped with vanilla scoop & hot chocolate.", img: "https://images.unsplash.com/photo-1564355808539-22fda35bed7e?auto=format&fit=crop&w=500&q=80" }
+    ];
+
+    let cart = {};
+    let currentCategory = 'All';
+    let orderType = 'Dine-In (At Cafe Table)';
+    let paymentMode = 'Online UPI';
+
+    function renderMenu() {
+      const grid = document.getElementById('menu-grid');
+      const search = document.getElementById('menu-search').value.toLowerCase();
+
+      const filtered = menuItems.filter(item => {
+        const matchesCat = currentCategory === 'All' || item.category === currentCategory;
+        const matchesSearch = item.name.toLowerCase().includes(search) || item.desc.toLowerCase().includes(search);
+        return matchesCat && matchesSearch;
+      });
+
+      grid.innerHTML = filtered.map(item => {
+        const qty = cart[item.id] || 0;
+        return `
+          <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between hover:border-gold/40 transition group">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <span class="absolute top-3 left-3 bg-espresso/90 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-emerald-500/30">
+                  ● PURE VEG
+                </span>
+                ${item.badge ? `<span class="absolute top-3 right-3 bg-caramel text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow">${item.badge}</span>` : ''}
+              </div>
+              <div class="p-5">
+                <div class="flex justify-between items-start gap-2 mb-1.5">
+                  <h3 class="font-bold text-lg text-cream leading-snug">${item.name}</h3>
+                  <span class="font-bold text-gold text-lg">₹${item.price}</span>
+                </div>
+                <p class="text-xs text-amber-100/70 leading-relaxed">${item.desc}</p>
+              </div>
+            </div>
+
+            <div class="px-5 pb-5">
+              ${qty === 0 ? `
+                <button onclick="updateQty(${item.id}, 1)" class="w-full py-2.5 rounded-xl bg-espresso hover:bg-caramel text-gold hover:text-white border border-amber-500/25 font-semibold text-sm transition flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-plus text-xs"></i> Add to Order
+                </button>
+              ` : `
+                <div class="flex items-center justify-between bg-caramel text-white rounded-xl px-4 py-2 font-bold">
+                  <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 rounded-lg bg-espresso/35 hover:bg-espresso/50 flex items-center justify-center">-</button>
+                  <span>${qty} in Cart</span>
+                  <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 rounded-lg bg-espresso/35 hover:bg-espresso/50 flex items-center justify-center">+</button>
+                </div>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.textContent.trim() === cat || (cat === 'All' && btn.textContent.trim() === 'All Items')) {
+          btn.className = 'cat-btn active px-5 py-2 rounded-full text-sm font-semibold bg-caramel text-white whitespace-nowrap transition';
+        } else {
+          btn.className = 'cat-btn px-5 py-2 rounded-full text-sm font-semibold bg-mocha text-amber-100/80 hover:text-white whitespace-nowrap transition';
+        }
+      });
+      renderMenu();
+    }
+
+    function filterMenu() {
+      renderMenu();
+    }
+
+    function updateQty(id, delta) {
+      cart[id] = (cart[id] || 0) + delta;
+      if (cart[id] <= 0) delete cart[id];
+      renderMenu();
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      let totalCount = 0;
+      let totalPrice = 0;
+      const cartContainer = document.getElementById('cart-items');
+      let html = '';
+
+      for (const [id, qty] of Object.entries(cart)) {
+        const item = menuItems.find(m => m.id == id);
+        if (!item) continue;
+        totalCount += qty;
+        totalPrice += item.price * qty;
+
+        html += `
+          <div class="flex items-center justify-between bg-espresso p-3 rounded-xl border border-amber-500/15">
+            <div>
+              <p class="text-sm font-semibold text-cream">${item.name}</p>
+              <p class="text-xs text-gold">₹${item.price} × ${qty} = ₹${item.price * qty}</p>
+            </div>
+            <div class="flex items-center gap-2 bg-mocha px-2 py-1 rounded-lg">
+              <button onclick="updateQty(${item.id}, -1)" class="text-amber-100 hover:text-gold px-1.5 font-bold">-</button>
+              <span class="text-xs font-bold">${qty}</span>
+              <button onclick="updateQty(${item.id}, 1)" class="text-amber-100 hover:text-gold px-1.5 font-bold">+</button>
+            </div>
+          </div>
+        `;
+      }
+
+      cartContainer.innerHTML = html || '<p class="text-sm text-amber-100/60 text-center py-6">Your cart is empty.</p>';
+      document.getElementById('nav-cart-count').textContent = totalCount;
+      document.getElementById('float-count').textContent = `${totalCount} Item${totalCount > 1 ? 's' : ''}`;
+      document.getElementById('float-total').textContent = `₹${totalPrice}`;
+      document.getElementById('cart-total').textContent = `₹${totalPrice}`;
+
+      const floatBar = document.getElementById('floating-cart-bar');
+      if (totalCount > 0) floatBar.classList.remove('hidden');
+      else floatBar.classList.add('hidden');
+    }
+
+    function toggleCart() {
+      document.getElementById('cart-modal').classList.toggle('hidden');
+    }
+
+    function setOrderType(type) {
+      orderType = type;
+      const dineBtn = document.getElementById('btn-dinein');
+      const delBtn = document.getElementById('btn-delivery');
+      const tableGrp = document.getElementById('table-input-group');
+      const addrGrp = document.getElementById('address-input-group');
+
+      if (type.includes('Dine-In')) {
+        dineBtn.className = 'order-type-btn py-2 px-3 rounded-xl text-xs font-bold bg-caramel text-white border border-caramel';
+        delBtn.className = 'order-type-btn py-2 px-3 rounded-xl text-xs font-bold bg-espresso text-amber-100/80 border border-amber-500/20';
+        tableGrp.classList.remove('hidden');
+        addrGrp.classList.add('hidden');
+      } else {
+        delBtn.className = 'order-type-btn py-2 px-3 rounded-xl text-xs font-bold bg-caramel text-white border border-caramel';
+        dineBtn.className = 'order-type-btn py-2 px-3 rounded-xl text-xs font-bold bg-espresso text-amber-100/80 border border-amber-500/20';
+        addrGrp.classList.remove('hidden');
+        tableGrp.classList.add('hidden');
+      }
+    }
+
+    function setPaymentMode(mode) {
+      paymentMode = mode;
+      const onlineBtn = document.getElementById('pay-online-btn');
+      const cashBtn = document.getElementById('pay-cash-btn');
+
+      if (mode === 'Online UPI') {
+        onlineBtn.className = 'pay-mode-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-caramel text-white border border-caramel flex items-center justify-center gap-1.5';
+        cashBtn.className = 'pay-mode-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-espresso text-amber-100/80 border border-amber-500/20 flex items-center justify-center gap-1.5';
+      } else {
+        cashBtn.className = 'pay-mode-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-caramel text-white border border-caramel flex items-center justify-center gap-1.5';
+        onlineBtn.className = 'pay-mode-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-espresso text-amber-100/80 border border-amber-500/20 flex items-center justify-center gap-1.5';
+      }
+    }
+
+    function proceedToCheckout() {
+      const entries = Object.entries(cart);
+      if (entries.length === 0) {
+        alert("Please add at least one item to your order first!");
+        return;
+      }
+
+      const name = document.getElementById('cust-name').value.trim();
+      const table = document.getElementById('cust-table').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+      if (orderType.includes('Dine-In') && !table) {
+        alert("Please enter your Table Number.");
+        return;
+      }
+      if (!orderType.includes('Dine-In') && !address) {
+        alert("Please enter your Delivery Address.");
+        return;
+      }
+
+      let totalPrice = 0;
+      entries.forEach(([id, qty]) => {
+        const item = menuItems.find(m => m.id == id);
+        totalPrice += item.price * qty;
+      });
+
+      if (paymentMode === 'Online UPI') {
+        // Generate UPI URI & QR Code
+        // Cafe UPI ID: 7752963966@paytm (or replace with your actual merchant UPI ID)
+        const upiId = "7752963966@paytm";
+        const payeeName = "Suto Cafe Gorakhpur";
+        const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${totalPrice}&cu=INR`;
+
+        document.getElementById('pay-modal-amount').textContent = `₹${totalPrice}`;
+        document.getElementById('upi-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+
+        document.getElementById('gpay-link').href = upiUrl;
+        document.getElementById('phonepe-link').href = upiUrl;
+        document.getElementById('paytm-link').href = upiUrl;
+
+        toggleCart();
+        document.getElementById('payment-modal').classList.remove('hidden');
+      } else {
+        completeOrderAfterPayment('Pay on Delivery / Cash');
+      }
+    }
+
+    function closePaymentModal() {
+      document.getElementById('payment-modal').classList.add('hidden');
+    }
+
+    function completeOrderAfterPayment(paymentStatus) {
+      const entries = Object.entries(cart);
+      const name = document.getElementById('cust-name').value.trim();
+      const table = document.getElementById('cust-table').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+
+      let orderLines = "";
+      let grandTotal = 0;
+
+      entries.forEach(([id, qty], index) => {
+        const item = menuItems.find(m => m.id == id);
+        const sub = item.price * qty;
+        grandTotal += sub;
+        orderLines += `${index + 1}. ${item.name} x${qty} - ₹${sub}%0A`;
+      });
+
+      const locationDetail = orderType.includes('Dine-In')
+        ? `*Table No:* ${table}`
+        : `*Delivery Address:* ${address}`;
+
+      const msg = `*NEW ORDER - SUTO CAFE GORAKHPUR*%0A` +
+                  `----------------------------%0A` +
+                  `*Order Type:* ${orderType}%0A` +
+                  `*Customer:* ${name}%0A` +
+                  `${locationDetail}%0A` +
+                  `*Payment Status:* ${paymentStatus}%0A` +
+                  `----------------------------%0A` +
+                  `*ITEMS:*%0A${orderLines}` +
+                  `----------------------------%0A` +
+                  `*TOTAL BILL: ₹${grandTotal}*`;
+
+      const whatsappUrl = `https://wa.me/917752963966?text=${msg}`;
+      window.open(whatsappUrl, '_blank');
+      closePaymentModal();
+    }
+
+    renderMenu();
+  </script>
+</body>
+</html>
